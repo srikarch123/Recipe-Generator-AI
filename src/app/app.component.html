@@ -1,7 +1,9 @@
-<!-- Div for the RMF Navbar -->
-<nav class="navbar navbar-expand-lg bg-green-100">
-  <div class="container-fluid">
-    <a class="navbar-brand">Recipe Generator</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid d-flex justify-content-between">
+    <a class="navbar-brand" href="#">
+      <!-- <img src="../assets/images/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
+      iFOOOD
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -129,20 +131,20 @@
           </ul>
         </li>
 
-        <!-- Other Categories Dropdown -->
+        <!-- Dairy Dropdown -->
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Other Categories
+            Dairy
           </a>
           <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-            <li *ngFor="let other of others" class="dropdown-item">
+            <li *ngFor="let dairy of dairy" class="dropdown-item">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="{{other.value}}" [(ngModel)]="selectedOthers[other.value]" (click)="$event.stopPropagation()">
-                <label class="form-check-label" for="{{other.value}}">{{ other.viewValue }}</label>
+                <input class="form-check-input" type="checkbox" id="{{dairy.value}}" [(ngModel)]="selectedDairy[dairy.value]" (click)="$event.stopPropagation()">
+                <label class="form-check-label" for="{{dairy.value}}">{{ dairy.viewValue }}</label>
               </div>
             </li>
             <li class="dropdown-item">
-              <button class="btn btn-danger w-100 mt-2" (click)="removeAll('others')">Remove All Items</button>
+              <button class="btn btn-danger w-100 mt-2" (click)="removeAll('Dairys')">Remove All Items</button>
             </li>
           </ul>
         </li>
@@ -156,21 +158,21 @@
 <div class="container mt-4">
   <div class="d-flex flex-wrap justify-content-start">
     <!-- Selected Cuisine -->
-    <div class="p-2 w-100" *ngIf="selectedCuisine">
+    <div class="p-2 flex-fill w-100" *ngIf="selectedCuisine">
       <div class="alert alert-primary">
         Selected Cuisine: {{ selectedCuisine }}
       </div>
     </div>
 
     <!-- Selected Course Type -->
-    <div class="p-2 w-100" *ngIf="selectedCourseType">
+    <div class="p-2 flex-fill w-100" *ngIf="selectedCourseType">
       <div class="alert alert-secondary">
         Selected Course Type: {{ selectedCourseType | titlecase }}
       </div>
     </div>
 
     <!-- Fruits -->
-    <div class="p-2" *ngIf="getSelectedItems(selectedFruits).length > 0">
+    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedFruits).length > 0">
       <div class="card">
         <div class="card-header bg-success text-white">
           Selected Fruits
@@ -184,7 +186,7 @@
     </div>
 
     <!-- Vegetables -->
-    <div class="p-2" *ngIf="getSelectedItems(selectedVegetables).length > 0">
+    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedVegetables).length > 0">
       <div class="card">
         <div class="card-header bg-success text-white">
           Selected Vegetables
@@ -198,21 +200,22 @@
     </div>
 
     <!-- Spices -->
-    <div class="p-2" *ngIf="getSelectedItems(selectedSpices).length > 0">
+    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedSpices).length > 0">
       <div class="card">
         <div class="card-header bg-success text-white">
           Selected Spices
         </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let spice of getSelectedItems(selectedSpices)">
+        <ul class="list-group list-group-flush" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+          <li class="list-group-item" *ngFor="let spice of getSelectedItems(selectedSpices)" style="border: none;">
             {{ spice }}
           </li>
         </ul>
       </div>
     </div>
+    
 
     <!-- Grains -->
-    <div class="p-2" *ngIf="getSelectedItems(selectedGrains).length > 0">
+    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedGrains).length > 0">
       <div class="card">
         <div class="card-header bg-success text-white">
           Selected Grains
@@ -226,7 +229,7 @@
     </div>
 
     <!-- Meat -->
-    <div class="p-2" *ngIf="getSelectedItems(selectedMeat).length > 0">
+    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedMeat).length > 0">
       <div class="card">
         <div class="card-header bg-success text-white">
           Selected Meat
@@ -239,26 +242,87 @@
       </div>
     </div>
 
-    <!-- Others -->
-    <div class="p-2" *ngIf="getSelectedItems(selectedOthers).length > 0">
+    <!-- Dairys -->
+    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedDairy).length > 0">
       <div class="card">
         <div class="card-header bg-success text-white">
-          Selected Items
+          Selected Dairy
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let other of getSelectedItems(selectedOthers)">
-            {{ other }}
+          <li class="list-group-item" *ngFor="let dairy of getSelectedItems(selectedDairy)">
+            {{ dairy }}
           </li>
         </ul>
       </div>
     </div>
   </div>
 
+  <!-- Button to craft the recipe -->
   <div class="container mt-4 text-center">
     <button 
       class="btn btn-primary btn-lg" 
+      (click)="craftRecipe()"
+      [disabled]="!canCraftRecipe()">Craft</button>
+  </div>
+
+  <div *ngIf="isLoading" class="text-center mt-5">
+    <div class="spinner-grow text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-success" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-danger" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-warning" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-info" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-secondary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <div class="spinner-grow text-dark" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+<!-- Div for displaying the generated recipe -->
+<div class="container mt-5" *ngIf="recipeTitle">
+  <h2 class="text-center mb-4">Generated Recipe:</h2>
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h3 class="card-title text-primary">{{ recipeTitle }}</h3>
       
-      [disabled]="!canCraftRecipe()">Craft Recipe</button>
+      <h4 class="mt-4">Ingredients:</h4>
+      <ul class="list-group list-group-flush mb-4" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+        <li class="list-group-item" *ngFor="let ingredient of recipeIngredients" style="border: none; padding: 0;">
+          {{ ingredient }}
+        </li>
+      </ul>
+      
+      
+      <h4 class="mt-4">Instructions:</h4>
+      <ol class="list-group list-group-numbered">
+        <li class="list-group-item" *ngFor="let step of recipeInstructions">
+          {{ step }}
+        </li>
+      </ol>
+
+      <h4 class="mt-4">Tips:</h4>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let tip of recipeTips">
+          {{ tip }}
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
+
+
 <!-- End of selected items display -->

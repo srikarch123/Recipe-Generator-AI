@@ -1,0 +1,36 @@
+.card {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+  }
+  
+  h3, h4 {
+    margin-top: 20px;
+  }
+  
+  ul, ol {
+    margin-left: 20px;
+    padding-left: 20px;
+  }
+  
+  ul li, ol li {
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+  }
+  
+  .container {
+    margin-top: 40px;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
