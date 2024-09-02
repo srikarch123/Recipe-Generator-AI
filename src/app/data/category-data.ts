@@ -120,7 +120,7 @@ export const Grains: CategoryItem[] = [
 export const Meat: CategoryItem[] = [
   { value: 'chicken', viewValue: 'Chicken' },
   { value: 'beef', viewValue: 'Beef' },
-  { value: 'Vegetarian', viewValue: 'Vegitarian' },
+  { value: 'Vegetarian', viewValue: 'Vegetarian' },
   { value: 'pork', viewValue: 'Pork' },
   { value: 'lamb', viewValue: 'Lamb' },
   { value: 'turkey', viewValue: 'Turkey' },
