@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Fruits, Vegetables, Spices, Grains, Meat, Dairy, Cuisines, CourseTypes } from './data/category-data';
 import { CategoryItem } from './interfaces/category.interface';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import { CategoryItem } from './interfaces/category.interface';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  private apiUrl = environment.apiUrl;
 
   //Animation
   isLoading = false; 
@@ -111,7 +113,7 @@ export class AppComponent {
       course_type: this.selectedCourseType
     };
   
-    this.http.post<any>('http://localhost:5000/generate_recipe', requestBody)
+    this.http.post<any>(`${this.apiUrl}/generate_recipe`, requestBody)
       .subscribe(response => {
         this.parseRecipe(response.recipe);
         this.isLoading = false;  // Stop loading after the recipe is successfully generated
