@@ -1,0 +1,28 @@
+name: ifood CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            cd /home/srikar/Recipe-Generator-AI
+            git pull origin main
+            npm install
+            npx ng build --configuration production
+            cd /home/srikar/
+            ./deployRecipe.sh
