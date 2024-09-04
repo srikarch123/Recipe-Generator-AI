@@ -28,7 +28,8 @@ export const Fruits: CategoryItem[] = [
   { value: 'jackfruit', viewValue: 'Jackfruit' },
   { value: 'lychee', viewValue: 'Lychee' },
   { value: 'sapota', viewValue: 'Sapota (Chikoo)' },
-  { value: 'custardapple', viewValue: 'Custard Apple (Sitaphal)' }
+  { value: 'custardapple', viewValue: 'Custard Apple (Sitaphal)' },
+  { value: 'dragonfruit', viewValue: 'Dragon Fruit' }
 ];
 
 
@@ -56,7 +57,10 @@ export const Vegetables: CategoryItem[] = [
   { value: 'mushroom', viewValue: 'Mushroom' },
   { value: 'drumstick', viewValue: 'Drumstick' },
   { value: 'sweetpotato', viewValue: 'Sweet Potato' },
-  { value: 'yam', viewValue: 'Yam' }
+  { value: 'yam', viewValue: 'Yam' },
+  { value: 'lettuce', viewValue: 'Lettuce' },
+  { value: 'turnip', viewValue: 'Turnip' },
+  { value: 'parsley', viewValue: 'Parsley' }
 ];
 
 
@@ -113,7 +117,8 @@ export const Grains: CategoryItem[] = [
   { value: 'foxtailmillet', viewValue: 'Foxtail Millet' },
   { value: 'semolina', viewValue: 'Semolina (Sooji)' },
   { value: 'brokenwheat', viewValue: 'Broken Wheat (Dalia)' },
-  { value: 'brownrice', viewValue: 'Brown Rice' }
+  { value: 'brownrice', viewValue: 'Brown Rice' },
+  { value: 'polenta', viewValue: 'Polenta' }
 ];
 
 
@@ -126,7 +131,10 @@ export const Meat: CategoryItem[] = [
   { value: 'turkey', viewValue: 'Turkey' },
   { value: 'duck', viewValue: 'Duck' },
   { value: 'fish', viewValue: 'Fish' },
-  { value: 'shrimp', viewValue: 'Shrimp' }
+  { value: 'shrimp', viewValue: 'Shrimp' },
+  { value: 'crab', viewValue: 'Crab' },
+  { value: 'lobster', viewValue: 'Lobster' },
+  { value: 'rabbit', viewValue: 'Rabbit' }
 ];
 
 export const Dairy: CategoryItem[] = [
@@ -134,6 +142,7 @@ export const Dairy: CategoryItem[] = [
   { value: 'cheese', viewValue: 'Cheese' },
   { value: 'yogurt', viewValue: 'Yogurt' },
   { value: 'butter', viewValue: 'Butter' },
+  { value: 'Eggs', viewValue: 'Eggs' },
   { value: 'cream', viewValue: 'Cream' },
   { value: 'ghee', viewValue: 'Ghee' },
   { value: 'paneer', viewValue: 'Paneer' },
@@ -156,7 +165,9 @@ export const Cuisines: CategoryItem[] = [
   { value: 'mexican', viewValue: 'Mexican' },
   { value: 'japanese', viewValue: 'Japanese' },
   { value: 'thai', viewValue: 'Thai' },
-  { value: 'mediterranean', viewValue: 'Mediterranean' }
+  { value: 'mediterranean', viewValue: 'Mediterranean' },
+  { value: 'korean', viewValue: 'Korean' },
+  { value: 'vietnamese', viewValue: 'Vietnamese' }
 ];
 
 // Course Types Category
@@ -168,5 +179,7 @@ export const CourseTypes: CategoryItem[] = [
   { value: 'soup', viewValue: 'Soup' },
   { value: 'salad', viewValue: 'Salad' },
   { value: 'beverage', viewValue: 'Beverage' },
-  { value: 'snack', viewValue: 'Snack' }
+  { value: 'snack', viewValue: 'Snack' },
+  { value: 'breakfast', viewValue: 'Breakfast' },
+  { value: 'brunch', viewValue: 'Brunch' }
 ];
