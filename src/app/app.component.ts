@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Fruits, Vegetables, Spices, Grains, Meat, Dairy, Cuisines, CourseTypes } from './data/category-data';
+import { Fruits, Vegetables, Spices, Grains, legumes, Meat, Dairy, Cuisines, CourseTypes } from './data/category-data';
 import { CategoryItem } from './interfaces/category.interface';
 import { environment } from '../environments/environment';
 
@@ -20,6 +20,7 @@ export class AppComponent {
   vegetables: CategoryItem[] = Vegetables;
   spices: CategoryItem[] = Spices;
   grains: CategoryItem[] = Grains;
+  legumes: CategoryItem[] = legumes;
   meat: CategoryItem[] = Meat;
   dairy: CategoryItem[] = Dairy;
   cuisines: CategoryItem[] = Cuisines;
@@ -30,6 +31,7 @@ export class AppComponent {
   selectedVegetables: { [key: string]: boolean } = {};
   selectedSpices: { [key: string]: boolean } = {};
   selectedGrains: { [key: string]: boolean } = {};
+  selectedLegumes:{ [key: string]: boolean } = {};
   selectedMeat: { [key: string]: boolean } = {};
   selectedDairy: { [key: string]: boolean } = {};
 
@@ -47,9 +49,9 @@ export class AppComponent {
   // Method to check if at least one item is selected in each category
   canCraftRecipe(): boolean {
     return (
-      this.getSelectedItems(this.selectedVegetables).length > 0 &&
-      this.getSelectedItems(this.selectedSpices).length > 0 &&
-      this.getSelectedItems(this.selectedGrains).length > 0
+      //this.getSelectedItems(this.selectedFruits).length > 0 &&
+      this.getSelectedItems(this.selectedSpices).length > 0 //&&
+      //this.getSelectedItems(this.selectedGrains).length > 0
       //this.getSelectedItems(this.selectedMeat).length > 0
     );
   }
@@ -73,6 +75,9 @@ export class AppComponent {
         break;
       case 'grains':
         this.selectedGrains = {};
+        break;
+      case 'legumes':
+        this.selectedLegumes ={};
         break;
       case 'meat':
         this.selectedMeat = {};
@@ -103,6 +108,7 @@ export class AppComponent {
       ...this.getSelectedItems(this.selectedVegetables),
       ...this.getSelectedItems(this.selectedSpices),
       ...this.getSelectedItems(this.selectedGrains),
+      ...this.getSelectedItems(this.selectedLegumes),
       ...this.getSelectedItems(this.selectedMeat),
       ...this.getSelectedItems(this.selectedDairy)
     ];

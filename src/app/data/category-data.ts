@@ -121,6 +121,20 @@ export const Grains: CategoryItem[] = [
   { value: 'polenta', viewValue: 'Polenta' }
 ];
 
+export const legumes: CategoryItem[] = [
+  { value: 'lentils', viewValue: 'Lentils' },
+  { value: 'chickpeas', viewValue: 'Chickpeas' },
+  { value: 'peas', viewValue: 'Peas' },
+  { value: 'black_beans', viewValue: 'Black Beans' },
+  { value: 'kidney_beans', viewValue: 'Kidney Beans' },
+  { value: 'soybeans', viewValue: 'Soybeans' },
+  { value: 'pinto_beans', viewValue: 'Pinto Beans' },
+  { value: 'navy_beans', viewValue: 'Navy Beans' },
+  { value: 'fava_beans', viewValue: 'Fava Beans' },
+  { value: 'mung_beans', viewValue: 'Mung Beans' },
+  { value: 'green_beans', viewValue: 'Green Beans' },
+  { value: 'adzuki_beans', viewValue: 'Adzuki Beans' }
+];
 
 export const Meat: CategoryItem[] = [
   { value: 'chicken', viewValue: 'Chicken' },
