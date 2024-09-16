@@ -8,165 +8,161 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
               <!-- Fruits Dropdown -->
               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Fruits </a>
-                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-                      <li *ngFor="let fruit of fruits" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <div class="form-check">
-                              <!-- Checkbox input -->
-                              <input class="form-check-input" type="checkbox" id="{{fruit.value}}" [(ngModel)]="selectedFruits[fruit.value]">
-                              <!-- Label triggers checkbox toggle -->
-                              <label class="form-check-label" for="{{fruit.value}}" (click)="toggleCheckbox(fruit.value, 'fruits')">
-                                  {{ fruit.viewValue }}
-                              </label>
-                          </div>
-                      </li>
-                      <li class="dropdown-item">
-                          <button class="btn btn-danger w-100 mt-2" (click)="removeAll('fruits')">Remove All Fruits</button>
-                      </li>
-                  </ul>
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Fruits </a>
+                <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                    <li *ngFor="let fruit of fruits" class="dropdown-item" (click)="$event.stopPropagation()">
+                        <!-- Wrap the checkbox and label inside the same label element -->
+                        <label class="form-check-label d-flex align-items-center w-100" for="{{fruit.value}}" (click)="toggleCheckbox(fruit.value, 'fruits')">
+                            <!-- Checkbox input -->
+                            <input class="form-check-input me-2" type="checkbox" id="{{fruit.value}}" [(ngModel)]="selectedFruits[fruit.value]">
+                            <!-- The text of the label -->
+                            {{ fruit.viewValue }}
+                        </label>
+                    </li>
+                    <li class="dropdown-item">
+                        <button class="btn btn-danger w-100 mt-2" (click)="removeAll('fruits')">Remove All Fruits</button>
+                    </li>
+                </ul>
               </li>
+
               <!-- Vegetables Dropdown -->
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Vegetables </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                       <li *ngFor="let vegetable of vegetables" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <div class="form-check">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{vegetable.value}}" (click)="toggleCheckbox(vegetable.value, 'vegetables')">
                               <!-- Checkbox input -->
-                              <input class="form-check-input" type="checkbox" id="{{vegetable.value}}" [(ngModel)]="selectedVegetables[vegetable.value]">
-                              <!-- Label triggers checkbox toggle -->
-                              <label class="form-check-label" for="{{vegetable.value}}" (click)="toggleCheckbox(vegetable.value, 'vegetables')">
-                                  {{ vegetable.viewValue }}
-                              </label>
-                          </div>
+                              <input class="form-check-input me-2" type="checkbox" id="{{vegetable.value}}" [(ngModel)]="selectedVegetables[vegetable.value]">
+                              <!-- The text of the label -->
+                              {{ vegetable.viewValue }}
+                          </label>
                       </li>
                       <li class="dropdown-item">
                           <button class="btn btn-danger w-100 mt-2" (click)="removeAll('vegetables')">Remove All Vegetables</button>
                       </li>
                   </ul>
               </li>
+
               <!-- Spices Dropdown -->
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Spices </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                       <li *ngFor="let spice of spices" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <div class="form-check">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{spice.value}}" (click)="toggleCheckbox(spice.value, 'spices')">
                               <!-- Checkbox input -->
-                              <input class="form-check-input" type="checkbox" id="{{spice.value}}" [(ngModel)]="selectedSpices[spice.value]">
-                              <!-- Label triggers checkbox toggle -->
-                              <label class="form-check-label" for="{{spice.value}}" (click)="toggleCheckbox(spice.value, 'spices')">
-                                  {{ spice.viewValue }}
-                              </label>
-                          </div>
+                              <input class="form-check-input me-2" type="checkbox" id="{{spice.value}}" [(ngModel)]="selectedSpices[spice.value]">
+                              {{ spice.viewValue }}
+                          </label>
                       </li>
                       <li class="dropdown-item">
                           <button class="btn btn-danger w-100 mt-2" (click)="removeAll('spices')">Remove All Spices</button>
                       </li>
                   </ul>
               </li>
+
               <!-- Grains Dropdown -->
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Grains </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                       <!-- Loop through grains -->
                       <li *ngFor="let grain of grains" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <div class="form-check">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{grain.value}}" (click)="toggleCheckbox(grain.value, 'grains')">
                               <!-- Checkbox input -->
-                              <input class="form-check-input" type="checkbox" id="{{grain.value}}" [(ngModel)]="selectedGrains[grain.value]">
-                              <!-- Label triggers checkbox toggle -->
-                              <label class="form-check-label" for="{{grain.value}}" (click)="toggleCheckbox(grain.value, 'grains')">
-                                  {{ grain.viewValue }}
-                              </label>
-                          </div>
+                              <input class="form-check-input me-2" type="checkbox" id="{{grain.value}}" [(ngModel)]="selectedGrains[grain.value]">
+                              {{ grain.viewValue }}
+                          </label>
                       </li>
                       <li class="dropdown-item">
                           <button class="btn btn-danger w-100 mt-2" (click)="removeAll('grains')">Remove All Grains</button>
                       </li>
                   </ul>
               </li>
+
               <!-- Legumes Dropdown -->
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Legumes </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                       <!-- Loop through legumes -->
                       <li *ngFor="let legume of legumes" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <div class="form-check">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{legume.value}}" (click)="toggleCheckbox(legume.value,'legumes')">
                               <!-- Checkbox input -->
-                              <input class="form-check-input" type="checkbox" id="{{legume.value}}" [(ngModel)]="selectedLegumes[legume.value]">
-                              <!-- Label triggers checkbox toggle -->
-                              <label class="form-check-label" for="{{legume.value}}" (click)="toggleCheckbox(legume.value,'legumes')">
-                                  {{ legume.viewValue }}
-                              </label>
-                          </div>
+                              <input class="form-check-input me-2" type="checkbox" id="{{legume.value}}" [(ngModel)]="selectedLegumes[legume.value]">
+                              {{ legume.viewValue }}
+                          </label>
                       </li>
                       <li class="dropdown-item">
                           <button class="btn btn-danger w-100 mt-2" (click)="removeAll('legumes')">Remove All Legumes</button>
                       </li>
                   </ul>
               </li>
+
               <!-- Meat Dropdown -->
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Meat </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                       <li *ngFor="let meatItem of meat" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <div class="form-check">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{meatItem.value}}" (click)="toggleCheckbox(meatItem.value, 'meat')">
                               <!-- Checkbox input -->
-                              <input class="form-check-input" type="checkbox" id="{{meatItem.value}}" [(ngModel)]="selectedMeat[meatItem.value]">
-                              <!-- Label triggers checkbox toggle -->
-                              <label class="form-check-label" for="{{meatItem.value}}" (click)="toggleCheckbox(meatItem.value, 'meat')">
-                                  {{ meatItem.viewValue }}
-                              </label>
-                          </div>
+                              <input class="form-check-input me-2" type="checkbox" id="{{meatItem.value}}" [(ngModel)]="selectedMeat[meatItem.value]">
+                              {{ meatItem.viewValue }}
+                          </label>
                       </li>
                       <li class="dropdown-item">
                           <button class="btn btn-danger w-100 mt-2" (click)="removeAll('meat')">Remove All Meat</button>
                       </li>
                   </ul>
               </li>
+
               <!-- Dairy Dropdown -->
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dairy </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                       <li *ngFor="let dairyItem of dairy" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <div class="form-check">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{dairyItem.value}}" (click)="toggleCheckbox(dairyItem.value, 'dairy')">
                               <!-- Checkbox input -->
-                              <input class="form-check-input" type="checkbox" id="{{dairyItem.value}}" [(ngModel)]="selectedDairy[dairyItem.value]">
-                              <!-- Label triggers checkbox toggle -->
-                              <label class="form-check-label" for="{{dairyItem.value}}" (click)="toggleCheckbox(dairyItem.value, 'dairy')">
-                                  {{ dairyItem.viewValue }}
-                              </label>
-                          </div>
+                              <input class="form-check-input me-2" type="checkbox" id="{{dairyItem.value}}" [(ngModel)]="selectedDairy[dairyItem.value]">
+                              {{ dairyItem.viewValue }}
+                          </label>
                       </li>
                       <li class="dropdown-item">
                           <button class="btn btn-danger w-100 mt-2" (click)="removeAll('Dairy')">Remove All Dairy Items</button>
                       </li>
                   </ul>
               </li>
+
               <!-- Cuisine Selection -->
               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Cuisine </a>
-                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-                      <li *ngFor="let cuisine of cuisines" class="dropdown-item">
-                          <div class="form-check">
-                              <input class="form-check-input" type="radio" name="cuisine" id="{{cuisine.value}}" (change)="selectCuisine(cuisine.viewValue)" [checked]="selectedCuisine === cuisine.viewValue">
-                              <label class="form-check-label" for="{{cuisine.value}}">{{ cuisine.viewValue }}</label>
-                          </div>
-                      </li>
-                  </ul>
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Cuisine </a>
+                <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                    <li *ngFor="let cuisine of cuisines" class="dropdown-item">
+                        <label class="form-check-label d-flex align-items-center w-100" for="{{cuisine.value}}">
+                            <!-- Radio input -->
+                            <input class="form-check-input me-2" type="radio" name="cuisine" id="{{cuisine.value}}" (change)="selectCuisine(cuisine.viewValue)" [checked]="selectedCuisine === cuisine.viewValue">
+                            <!-- The text of the label -->
+                            {{ cuisine.viewValue }}
+                        </label>
+                    </li>
+                </ul>
               </li>
+
               <!-- Course Type Selection -->
               <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Course Type </a>
-                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-                      <li *ngFor="let course of courseTypes" class="dropdown-item">
-                          <div class="form-check">
-                              <input class="form-check-input" type="radio" name="courseType" id="{{course.value}}" (change)="selectCourseType(course.value)" [checked]="selectedCourseType === course.value">
-                              <label class="form-check-label" for="{{course.value}}">{{ course.viewValue }}</label>
-                          </div>
-                      </li>
-                  </ul>
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Course Type </a>
+                <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                    <li *ngFor="let course of courseTypes" class="dropdown-item">
+                        <label class="form-check-label d-flex align-items-center w-100" for="{{course.value}}">
+                            <!-- Radio input -->
+                            <input class="form-check-input me-2" type="radio" name="courseType" id="{{course.value}}" (change)="selectCourseType(course.value)" [checked]="selectedCourseType === course.value">
+                            <!-- The text of the label -->
+                            {{ course.viewValue }}
+                        </label>
+                    </li>
+                </ul>
               </li>
+
           </ul>
       </div>
   </div>
