@@ -1,362 +1,322 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid d-flex justify-content-between">
-    <a class="navbar-brand" href="#">
-      <!-- <img src="../assets/images/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
-      iFOOOD
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-        <!-- Fruits Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Fruits
-          </a>
-          <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-            <li *ngFor="let fruit of fruits" class="dropdown-item">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="{{fruit.value}}" [(ngModel)]="selectedFruits[fruit.value]" (click)="$event.stopPropagation()">
-                <label class="form-check-label" for="{{fruit.value}}">{{ fruit.viewValue }}</label>
-              </div>
-            </li>
-            <li class="dropdown-item">
-              <button class="btn btn-danger w-100 mt-2" (click)="removeAll('fruits')">Remove All Fruits</button>
-            </li>
+      <a class="navbar-brand" href="#">
+          <!-- <img src="../assets/images/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->iFOOOD
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <!-- Fruits Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Fruits </a>
+                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                      <li *ngFor="let fruit of fruits" class="dropdown-item" (click)="$event.stopPropagation()">
+                          <div class="form-check">
+                              <!-- Checkbox input -->
+                              <input class="form-check-input" type="checkbox" id="{{fruit.value}}" [(ngModel)]="selectedFruits[fruit.value]">
+                              <!-- Label triggers checkbox toggle -->
+                              <label class="form-check-label" for="{{fruit.value}}" (click)="toggleCheckbox(fruit.value, 'fruits')">
+                                  {{ fruit.viewValue }}
+                              </label>
+                          </div>
+                      </li>
+                      <li class="dropdown-item">
+                          <button class="btn btn-danger w-100 mt-2" (click)="removeAll('fruits')">Remove All Fruits</button>
+                      </li>
+                  </ul>
+              </li>
+              <!-- Vegetables Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Vegetables </a>
+                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                      <li *ngFor="let vegetable of vegetables" class="dropdown-item" (click)="$event.stopPropagation()">
+                          <div class="form-check">
+                              <!-- Checkbox input -->
+                              <input class="form-check-input" type="checkbox" id="{{vegetable.value}}" [(ngModel)]="selectedVegetables[vegetable.value]">
+                              <!-- Label triggers checkbox toggle -->
+                              <label class="form-check-label" for="{{vegetable.value}}" (click)="toggleCheckbox(vegetable.value, 'vegetables')">
+                                  {{ vegetable.viewValue }}
+                              </label>
+                          </div>
+                      </li>
+                      <li class="dropdown-item">
+                          <button class="btn btn-danger w-100 mt-2" (click)="removeAll('vegetables')">Remove All Vegetables</button>
+                      </li>
+                  </ul>
+              </li>
+              <!-- Spices Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Spices </a>
+                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                      <li *ngFor="let spice of spices" class="dropdown-item" (click)="$event.stopPropagation()">
+                          <div class="form-check">
+                              <!-- Checkbox input -->
+                              <input class="form-check-input" type="checkbox" id="{{spice.value}}" [(ngModel)]="selectedSpices[spice.value]">
+                              <!-- Label triggers checkbox toggle -->
+                              <label class="form-check-label" for="{{spice.value}}" (click)="toggleCheckbox(spice.value, 'spices')">
+                                  {{ spice.viewValue }}
+                              </label>
+                          </div>
+                      </li>
+                      <li class="dropdown-item">
+                          <button class="btn btn-danger w-100 mt-2" (click)="removeAll('spices')">Remove All Spices</button>
+                      </li>
+                  </ul>
+              </li>
+              <!-- Grains Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Grains </a>
+                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                      <!-- Loop through grains -->
+                      <li *ngFor="let grain of grains" class="dropdown-item" (click)="$event.stopPropagation()">
+                          <div class="form-check">
+                              <!-- Checkbox input -->
+                              <input class="form-check-input" type="checkbox" id="{{grain.value}}" [(ngModel)]="selectedGrains[grain.value]">
+                              <!-- Label triggers checkbox toggle -->
+                              <label class="form-check-label" for="{{grain.value}}" (click)="toggleCheckbox(grain.value, 'grains')">
+                                  {{ grain.viewValue }}
+                              </label>
+                          </div>
+                      </li>
+                      <li class="dropdown-item">
+                          <button class="btn btn-danger w-100 mt-2" (click)="removeAll('grains')">Remove All Grains</button>
+                      </li>
+                  </ul>
+              </li>
+              <!-- Legumes Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Legumes </a>
+                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                      <!-- Loop through legumes -->
+                      <li *ngFor="let legume of legumes" class="dropdown-item" (click)="$event.stopPropagation()">
+                          <div class="form-check">
+                              <!-- Checkbox input -->
+                              <input class="form-check-input" type="checkbox" id="{{legume.value}}" [(ngModel)]="selectedLegumes[legume.value]">
+                              <!-- Label triggers checkbox toggle -->
+                              <label class="form-check-label" for="{{legume.value}}" (click)="toggleCheckbox(legume.value,'legumes')">
+                                  {{ legume.viewValue }}
+                              </label>
+                          </div>
+                      </li>
+                      <li class="dropdown-item">
+                          <button class="btn btn-danger w-100 mt-2" (click)="removeAll('legumes')">Remove All Legumes</button>
+                      </li>
+                  </ul>
+              </li>
+              <!-- Meat Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Meat </a>
+                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                      <li *ngFor="let meatItem of meat" class="dropdown-item" (click)="$event.stopPropagation()">
+                          <div class="form-check">
+                              <!-- Checkbox input -->
+                              <input class="form-check-input" type="checkbox" id="{{meatItem.value}}" [(ngModel)]="selectedMeat[meatItem.value]">
+                              <!-- Label triggers checkbox toggle -->
+                              <label class="form-check-label" for="{{meatItem.value}}" (click)="toggleCheckbox(meatItem.value, 'meat')">
+                                  {{ meatItem.viewValue }}
+                              </label>
+                          </div>
+                      </li>
+                      <li class="dropdown-item">
+                          <button class="btn btn-danger w-100 mt-2" (click)="removeAll('meat')">Remove All Meat</button>
+                      </li>
+                  </ul>
+              </li>
+              <!-- Dairy Dropdown -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dairy </a>
+                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                      <li *ngFor="let dairyItem of dairy" class="dropdown-item" (click)="$event.stopPropagation()">
+                          <div class="form-check">
+                              <!-- Checkbox input -->
+                              <input class="form-check-input" type="checkbox" id="{{dairyItem.value}}" [(ngModel)]="selectedDairy[dairyItem.value]">
+                              <!-- Label triggers checkbox toggle -->
+                              <label class="form-check-label" for="{{dairyItem.value}}" (click)="toggleCheckbox(dairyItem.value, 'dairy')">
+                                  {{ dairyItem.viewValue }}
+                              </label>
+                          </div>
+                      </li>
+                      <li class="dropdown-item">
+                          <button class="btn btn-danger w-100 mt-2" (click)="removeAll('Dairy')">Remove All Dairy Items</button>
+                      </li>
+                  </ul>
+              </li>
+              <!-- Cuisine Selection -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Cuisine </a>
+                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                      <li *ngFor="let cuisine of cuisines" class="dropdown-item">
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="cuisine" id="{{cuisine.value}}" (change)="selectCuisine(cuisine.viewValue)" [checked]="selectedCuisine === cuisine.viewValue">
+                              <label class="form-check-label" for="{{cuisine.value}}">{{ cuisine.viewValue }}</label>
+                          </div>
+                      </li>
+                  </ul>
+              </li>
+              <!-- Course Type Selection -->
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Course Type </a>
+                  <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
+                      <li *ngFor="let course of courseTypes" class="dropdown-item">
+                          <div class="form-check">
+                              <input class="form-check-input" type="radio" name="courseType" id="{{course.value}}" (change)="selectCourseType(course.value)" [checked]="selectedCourseType === course.value">
+                              <label class="form-check-label" for="{{course.value}}">{{ course.viewValue }}</label>
+                          </div>
+                      </li>
+                  </ul>
+              </li>
           </ul>
-        </li>
-
-        <!-- Vegetables Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Vegetables
-          </a>
-          <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-            <li *ngFor="let vegetable of vegetables" class="dropdown-item">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="{{vegetable.value}}" [(ngModel)]="selectedVegetables[vegetable.value]" (click)="$event.stopPropagation()">
-                <label class="form-check-label" for="{{vegetable.value}}">{{ vegetable.viewValue }}</label>
-              </div>
-            </li>
-            <li class="dropdown-item">
-              <button class="btn btn-danger w-100 mt-2" (click)="removeAll('vegetables')">Remove All Vegetables</button>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Spices Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Spices
-          </a>
-          <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-            <li *ngFor="let spice of spices" class="dropdown-item">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="{{spice.value}}" [(ngModel)]="selectedSpices[spice.value]" (click)="$event.stopPropagation()">
-                <label class="form-check-label" for="{{spice.value}}">{{ spice.viewValue }}</label>
-              </div>
-            </li>
-            <li class="dropdown-item">
-              <button class="btn btn-danger w-100 mt-2" (click)="removeAll('spices')">Remove All Spices</button>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Grains Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Grains
-          </a>
-          <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-            <li *ngFor="let grain of grains" class="dropdown-item">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="{{grain.value}}" [(ngModel)]="selectedGrains[grain.value]" (click)="$event.stopPropagation()">
-                <label class="form-check-label" for="{{grain.value}}">{{ grain.viewValue }}</label>
-              </div>
-            </li>
-            <li class="dropdown-item">
-              <button class="btn btn-danger w-100 mt-2" (click)="removeAll('grains')">Remove All Grains</button>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Legumes Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Legumes
-          </a>
-          <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-            <li *ngFor="let legume of legumes" class="dropdown-item">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="{{legume.value}}" [(ngModel)]="selectedLegumes[legume.value]" (click)="$event.stopPropagation()">
-                <label class="form-check-label" for="{{legume.value}}">{{ legume.viewValue }}</label>
-              </div>
-            </li>
-            <li class="dropdown-item">
-              <button class="btn btn-danger w-100 mt-2" (click)="removeAll('legume')">Remove All Legumes</button>
-            </li>
-          </ul>
-        </li>
-        
-
-        <!-- Meat Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Meat
-          </a>
-          <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-            <li *ngFor="let meat of meat" class="dropdown-item">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="{{meat.value}}" [(ngModel)]="selectedMeat[meat.value]" (click)="$event.stopPropagation()">
-                <label class="form-check-label" for="{{meat.value}}">{{ meat.viewValue }}</label>
-              </div>
-            </li>
-            <li class="dropdown-item">
-              <button class="btn btn-danger w-100 mt-2" (click)="removeAll('meat')">Remove All Meat</button>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Cuisine Selection -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Cuisine
-          </a>
-          <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-            <li *ngFor="let cuisine of cuisines" class="dropdown-item">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="cuisine" id="{{cuisine.value}}" (change)="selectCuisine(cuisine.viewValue)" [checked]="selectedCuisine === cuisine.viewValue">
-                <label class="form-check-label" for="{{cuisine.value}}">{{ cuisine.viewValue }}</label>
-              </div>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Course Type Selection -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Course Type
-          </a>
-          <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-            <li *ngFor="let course of courseTypes" class="dropdown-item">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="courseType" id="{{course.value}}" (change)="selectCourseType(course.value)" [checked]="selectedCourseType === course.value">
-                <label class="form-check-label" for="{{course.value}}">{{ course.viewValue }}</label>
-              </div>
-            </li>
-          </ul>
-        </li>
-
-        <!-- Dairy Dropdown -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dairy
-          </a>
-          <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-            <li *ngFor="let dairy of dairy" class="dropdown-item">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="{{dairy.value}}" [(ngModel)]="selectedDairy[dairy.value]" (click)="$event.stopPropagation()">
-                <label class="form-check-label" for="{{dairy.value}}">{{ dairy.viewValue }}</label>
-              </div>
-            </li>
-            <li class="dropdown-item">
-              <button class="btn btn-danger w-100 mt-2" (click)="removeAll('Dairys')">Remove All Items</button>
-            </li>
-          </ul>
-        </li>
-
-      </ul>
-    </div>
+      </div>
   </div>
 </nav>
-
 <!-- Div for displaying selected items -->
 <div class="container mt-4">
   <div class="d-flex flex-wrap justify-content-start">
-    <!-- Selected Cuisine -->
-    <div class="p-2 flex-fill w-100" *ngIf="selectedCuisine">
-      <div class="alert alert-primary">
-        Selected Cuisine: {{ selectedCuisine }}
+      <!-- Selected Cuisine -->
+      <div class="p-2 flex-fill w-100" *ngIf="selectedCuisine">
+          <div class="alert alert-primary"> Selected Cuisine: {{ selectedCuisine }}
+          </div>
       </div>
-    </div>
-
-    <!-- Selected Course Type -->
-    <div class="p-2 flex-fill w-100" *ngIf="selectedCourseType">
-      <div class="alert alert-secondary">
-        Selected Course Type: {{ selectedCourseType | titlecase }}
+      <!-- Selected Course Type -->
+      <div class="p-2 flex-fill w-100" *ngIf="selectedCourseType">
+          <div class="alert alert-secondary"> Selected Course Type: {{ selectedCourseType | titlecase }}
+          </div>
       </div>
-    </div>
-
-    <!-- Fruits -->
-    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedFruits).length > 0">
-      <div class="card">
-        <div class="card-header bg-success text-white">
-          Selected Fruits
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let fruit of getSelectedItems(selectedFruits)">
-            {{ fruit }}
-          </li>
-        </ul>
+      <!-- Fruits -->
+      <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedFruits).length > 0">
+          <div class="card">
+              <div class="card-header bg-success text-white"> Selected Fruits </div>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let fruit of getSelectedItems(selectedFruits)">
+                      {{ fruit }}
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
-
-    <!-- Vegetables -->
-    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedVegetables).length > 0">
-      <div class="card">
-        <div class="card-header bg-success text-white">
-          Selected Vegetables
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let vegetable of getSelectedItems(selectedVegetables)">
-            {{ vegetable }}
-          </li>
-        </ul>
+      <!-- Vegetables -->
+      <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedVegetables).length > 0">
+          <div class="card">
+              <div class="card-header bg-success text-white"> Selected Vegetables </div>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let vegetable of getSelectedItems(selectedVegetables)">
+                      {{ vegetable }}
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
-
-    <!-- Spices -->
-    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedSpices).length > 0">
-      <div class="card">
-        <div class="card-header bg-success text-white">
-          Selected Spices
-        </div>
-        <ul class="list-group list-group-flush" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
-          <li class="list-group-item" *ngFor="let spice of getSelectedItems(selectedSpices)" style="border: none;">
-            {{ spice }}
-          </li>
-        </ul>
+      <!-- Spices -->
+      <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedSpices).length > 0">
+          <div class="card">
+              <div class="card-header bg-success text-white"> Selected Spices </div>
+              <ul class="list-group list-group-flush" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                  <li class="list-group-item" *ngFor="let spice of getSelectedItems(selectedSpices)" style="border: none;">
+                      {{ spice }}
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
-    
-
-    <!-- Grains -->
-    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedGrains).length > 0">
-      <div class="card">
-        <div class="card-header bg-success text-white">
-          Selected Grains
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let grain of getSelectedItems(selectedGrains)">
-            {{ grain }}
-          </li>
-        </ul>
+      <!-- Grains -->
+      <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedGrains).length > 0">
+          <div class="card">
+              <div class="card-header bg-success text-white"> Selected Grains </div>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let grain of getSelectedItems(selectedGrains)">
+                      {{ grain }}
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
-
-    <!-- Legumes -->
-    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedLegumes).length > 0">
-      <div class="card">
-        <div class="card-header bg-success text-white">
-          Selected Legumes
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let legume of getSelectedItems(selectedLegumes)">
-            {{ legume }}
-          </li>
-        </ul>
+      <!-- Legumes -->
+      <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedLegumes).length > 0">
+          <div class="card">
+              <div class="card-header bg-success text-white"> Selected Legumes </div>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let legume of getSelectedItems(selectedLegumes)">
+                      {{ legume }}
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
-    
-
-    <!-- Meat -->
-    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedMeat).length > 0">
-      <div class="card">
-        <div class="card-header bg-success text-white">
-          Selected Meat
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let meat of getSelectedItems(selectedMeat)">
-            {{ meat }}
-          </li>
-        </ul>
+      <!-- Meat -->
+      <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedMeat).length > 0">
+          <div class="card">
+              <div class="card-header bg-success text-white"> Selected Meat </div>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let meat of getSelectedItems(selectedMeat)">
+                      {{ meat }}
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
-
-    <!-- Dairys -->
-    <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedDairy).length > 0">
-      <div class="card">
-        <div class="card-header bg-success text-white">
-          Selected Dairy
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let dairy of getSelectedItems(selectedDairy)">
-            {{ dairy }}
-          </li>
-        </ul>
+      <!-- Dairys -->
+      <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedDairy).length > 0">
+          <div class="card">
+              <div class="card-header bg-success text-white"> Selected Dairy </div>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let dairy of getSelectedItems(selectedDairy)">
+                      {{ dairy }}
+                  </li>
+              </ul>
+          </div>
       </div>
-    </div>
   </div>
-
   <!-- Button to craft the recipe -->
   <div class="container mt-4 text-center">
-    <button 
-      class="btn btn-primary btn-lg" 
-      (click)="craftRecipe()"
-      [disabled]="!canCraftRecipe()">Craft</button>
+      <button class="btn btn-primary btn-lg" (click)="craftRecipe()" [disabled]="!canCraftRecipe()">Craft</button>
   </div>
-
   <div *ngIf="isLoading" class="text-center mt-5">
-    <div class="spinner-grow text-primary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow text-secondary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow text-success" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow text-danger" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow text-warning" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow text-info" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow text-secondary" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
-    <div class="spinner-grow text-dark" role="status">
-      <span class="visually-hidden">Loading...</span>
-    </div>
+      <div class="spinner-grow text-primary" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-secondary" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-danger" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-warning" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-info" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-secondary" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="spinner-grow text-dark" role="status">
+          <span class="visually-hidden">Loading...</span>
+      </div>
   </div>
-
-<!-- Div for displaying the generated recipe -->
-<div class="container mt-5" *ngIf="recipeTitle">
-  <h2 class="text-center mb-4">Why don't you try this ?</h2>
-  <div class="card shadow-sm">
-    <div class="card-body">
-      <h3 class="card-title text-primary">{{ recipeTitle }}</h3>
-      
-      <h4 class="mt-4">Ingredients:</h4>
-      <ul class="list-group list-group-flush mb-4" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
-        <li class="list-group-item" *ngFor="let ingredient of recipeIngredients" style="border: none; padding: 0;">
-          {{ ingredient }}
-        </li>
-      </ul>
-      
-      
-      <h4 class="mt-4">Instructions:</h4>
-      <ol class="list-group list-group-numbered">
-        <li class="list-group-item" *ngFor="let step of recipeInstructions">
-          {{ step }}
-        </li>
-      </ol>
-
-      <h4 class="mt-4">Tips:</h4>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item" *ngFor="let tip of recipeTips">
-          {{ tip }}
-        </li>
-      </ul>
-    </div>
+  <!-- Div for displaying the generated recipe -->
+  <div class="container mt-5" *ngIf="recipeTitle">
+      <h2 class="text-center mb-4">Why don't you try this ?</h2>
+      <div class="card shadow-sm">
+          <div class="card-body">
+              <h3 class="card-title text-primary">{{ recipeTitle }}</h3>
+              <h4 class="mt-4">Ingredients:</h4>
+              <ul class="list-group list-group-flush mb-4" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+                  <li class="list-group-item" *ngFor="let ingredient of recipeIngredients" style="border: none; padding: 0;">
+                      {{ ingredient }}
+                  </li>
+              </ul>
+              <h4 class="mt-4">Instructions:</h4>
+              <ol class="list-group list-group-numbered">
+                  <li class="list-group-item" *ngFor="let step of recipeInstructions">
+                      {{ step }}
+                  </li>
+              </ol>
+              <h4 class="mt-4">Tips:</h4>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item" *ngFor="let tip of recipeTips">
+                      {{ tip }}
+                  </li>
+              </ul>
+          </div>
+      </div>
   </div>
-</div>
-
-
-<!-- End of selected items display -->
+  <!-- End of selected items display -->

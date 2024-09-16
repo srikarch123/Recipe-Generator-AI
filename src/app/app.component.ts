@@ -46,6 +46,34 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {}
 
+  toggleCheckbox(value: string, type: 'grains' | 'legumes' | 'fruits' | 'vegetables' | 'spices' | 'meat' | 'dairy'): void {
+    switch (type) {
+      case 'grains':
+        this.selectedGrains[value] = !this.selectedGrains[value];
+        break;
+      case 'legumes':
+        this.selectedLegumes[value] = !this.selectedLegumes[value];
+        break;
+      case 'fruits':
+        this.selectedFruits[value] = !this.selectedFruits[value];
+        break;
+      case 'vegetables':
+        this.selectedVegetables[value] = !this.selectedVegetables[value];
+        break;
+      case 'spices':
+        this.selectedSpices[value] = !this.selectedSpices[value];
+        break;
+      case 'meat':
+        this.selectedMeat[value] = !this.selectedMeat[value];
+        break;
+      case 'dairy':
+        this.selectedDairy[value] = !this.selectedDairy[value];
+        break;
+    }
+  }
+
+  
+
   // Method to check if at least one item is selected in each category
   canCraftRecipe(): boolean {
     return (
