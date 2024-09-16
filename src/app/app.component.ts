@@ -71,18 +71,21 @@ export class AppComponent {
         break;
     }
   }
-
   
 
   // Method to check if at least one item is selected in each category
   canCraftRecipe(): boolean {
     return (
-      //this.getSelectedItems(this.selectedFruits).length > 0 &&
-      this.getSelectedItems(this.selectedSpices).length > 0 //&&
-      //this.getSelectedItems(this.selectedGrains).length > 0
-      //this.getSelectedItems(this.selectedMeat).length > 0
+      this.getSelectedItems(this.selectedFruits).length > 0 ||
+      this.getSelectedItems(this.selectedSpices).length > 0 ||
+      this.getSelectedItems(this.selectedGrains).length > 0 ||
+      this.getSelectedItems(this.selectedLegumes).length > 0 ||
+      this.getSelectedItems(this.selectedVegetables).length > 0 ||
+      this.getSelectedItems(this.selectedMeat).length > 0 ||
+      this.getSelectedItems(this.selectedDairy).length > 0
     );
   }
+  
 
   // Method to get selected items from a category
   getSelectedItems(category: { [key: string]: boolean }): string[] {
