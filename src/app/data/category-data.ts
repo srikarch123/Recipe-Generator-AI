@@ -169,7 +169,6 @@ export const Dairy: CategoryItem[] = [
   { value: 'whippedcream', viewValue: 'Whipped Cream' }
 ];
 
-
 export const Cuisines: CategoryItem[] = [
   { value: 'indian', viewValue: 'Indian' },
   { value: 'american', viewValue: 'American' },
@@ -181,8 +180,45 @@ export const Cuisines: CategoryItem[] = [
   { value: 'thai', viewValue: 'Thai' },
   { value: 'mediterranean', viewValue: 'Mediterranean' },
   { value: 'korean', viewValue: 'Korean' },
-  { value: 'vietnamese', viewValue: 'Vietnamese' }
+  { value: 'vietnamese', viewValue: 'Vietnamese' },
+  { value: 'spanish', viewValue: 'Spanish' },
+  { value: 'greek', viewValue: 'Greek' },
+  { value: 'turkish', viewValue: 'Turkish' },
+  { value: 'moroccan', viewValue: 'Moroccan' },
+  { value: 'lebanese', viewValue: 'Lebanese' },
+  { value: 'ethiopian', viewValue: 'Ethiopian' },
+  { value: 'caribbean', viewValue: 'Caribbean' },
+  { value: 'brazilian', viewValue: 'Brazilian' },
+  { value: 'cajun', viewValue: 'Cajun' },
+  { value: 'peruvian', viewValue: 'Peruvian' },
+  { value: 'swedish', viewValue: 'Swedish' },
+  { value: 'german', viewValue: 'German' },
+  { value: 'russian', viewValue: 'Russian' },
+  { value: 'thai', viewValue: 'Thai' },
+  { value: 'filipino', viewValue: 'Filipino' },
+  { value: 'indonesian', viewValue: 'Indonesian' },
+  { value: 'bengali', viewValue: 'Bengali' },
+  { value: 'cajun', viewValue: 'Cajun' },
+  { value: 'southeast_asian', viewValue: 'Southeast Asian' },
+  { value: 'pakistani', viewValue: 'Pakistani' },
+  { value: 'irish', viewValue: 'Irish' },
+  { value: 'scottish', viewValue: 'Scottish' },
+  { value: 'polish', viewValue: 'Polish' },
+  { value: 'cuban', viewValue: 'Cuban' },
+  { value: 'hawaiian', viewValue: 'Hawaiian' },
+  { value: 'taiwanese', viewValue: 'Taiwanese' },
+  { value: 'cantonese', viewValue: 'Cantonese' },
+  { value: 'szechuan', viewValue: 'Szechuan' },
+  { value: 'balinese', viewValue: 'Balinese' },
+  { value: 'luxembourgish', viewValue: 'Luxembourgish' },
+  { value: 'persian', viewValue: 'Persian' },
+  { value: 'saudi', viewValue: 'Saudi' },
+  { value: 'malaysian', viewValue: 'Malaysian' },
+  { value: 'sri_lankan', viewValue: 'Sri Lankan' },
+  { value: 'catalan', viewValue: 'Catalan' },
+  { value: 'basque', viewValue: 'Basque' }
 ];
+
 
 // Course Types Category
 export const CourseTypes: CategoryItem[] = [
