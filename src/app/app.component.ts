@@ -161,32 +161,41 @@ export class AppComponent {
   }
   
   parseRecipe(rawRecipe: string) {
-    // Adjust the regular expression patterns to match the format in the provided string
-    const titleMatch = rawRecipe.match(/^\*\*Title:\*\*\s*(.*?)\n/);
-    const ingredientsMatch = rawRecipe.match(/\*\*Recipe Ingredients:\*\*(.*?)\*\*Instructions:/s);
-    const instructionsMatch = rawRecipe.match(/\*\*Instructions:\*\*(.*?)\*\*Tips:/s);
-    const tipsMatch = rawRecipe.match(/\*\*Tips:\*\*(.*)/s);
-
-    // Extract and assign the title
+    // Extract the title
+    const titleMatch = rawRecipe.match(/\*\*Title:\*\*\s*(.+?)(\n|\r|$)/);
     this.recipeTitle = titleMatch ? titleMatch[1].trim() : 'Generated Recipe';
 
-    // Extract and assign the ingredients list, cleaning up any extra formatting characters
+    // Extract the ingredients
+    const ingredientsMatch = rawRecipe.match(/\*\*Recipe Ingredients:\*\*\s*([\s\S]*?)\*\*Instructions:/);
     if (ingredientsMatch) {
-        this.recipeIngredients = ingredientsMatch[1].trim().split('\n').map(i => i.replace(/^\* /, '').trim()).filter(i => i);
+        this.recipeIngredients = ingredientsMatch[1]
+            .trim()
+            .split('\n')
+            .map(i => i.replace(/^\* /, '').trim())  // Removes "* " at the beginning
+            .filter(i => i && !/^\d+\.$/.test(i));   // Removes standalone numbers like "3."
     } else {
         this.recipeIngredients = [];
     }
 
-    // Extract and assign the instructions, splitting by numbers (1., 2., etc.)
+    // Extract the instructions
+    const instructionsMatch = rawRecipe.match(/\*\*Instructions:\*\*\s*([\s\S]*?)(\*\*Tips:|\*\*End)/);
     if (instructionsMatch) {
-        this.recipeInstructions = instructionsMatch[1].trim().split(/\d+\.\s+/).filter(i => i);
+        this.recipeInstructions = instructionsMatch[1]
+            .trim()
+            .split(/\d+\.\s+/)  // Split by numbers like "1. ", "2. "
+            .filter(i => i);
     } else {
         this.recipeInstructions = [];
     }
 
-    // Extract and assign the tips, cleaning up any extra formatting characters
+    // Extract the tips
+    const tipsMatch = rawRecipe.match(/\*\*Tips:\*\*\s*([\s\S]*)/);
     if (tipsMatch) {
-        this.recipeTips = tipsMatch[1].trim().split('\n').map(i => i.replace(/^\* /, '').trim()).filter(i => i);
+        this.recipeTips = tipsMatch[1]
+            .trim()
+            .split('\n')
+            .map(i => i.replace(/^\* /, '').trim())  // Removes "* " at the beginning
+            .filter(i => i);
     } else {
         this.recipeTips = [];
     }
