@@ -529,14 +529,17 @@
 // 🎮 PARTICLE GAME UI
 .particle-game-ui {
   position: fixed;
-  top: 20px;
+  top: 70px; // adjust if your navbar is taller or shorter
   right: 20px;
-  z-index: 1000;
+  z-index: 1050; // above background but below modals/dropdowns
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   gap: 10px;
-  pointer-events: none;
+  pointer-events: auto;
 }
+
+
 
 .particle-score {
   background: rgba(255, 107, 53, 0.9);
