@@ -19,7 +19,7 @@ if not GOOGLE_API_KEY:
 
 
 # Initialize the Google Gemini model
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", google_api_key=GOOGLE_API_KEY)
+llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", google_api_key=GOOGLE_API_KEY)
 
 @app.route('/api/generate_recipe', methods=['POST'])
 def generate_recipe():

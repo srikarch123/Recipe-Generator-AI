@@ -1,3 +1,51 @@
+<!-- 🎮 ANIMATED BACKGROUND WITH INTERACTIVE PARTICLES -->
+<div class="app-background">
+  <div class="food-particle" data-food="carrot"></div>
+  <div class="food-particle" data-food="pizza"></div>
+  <div class="food-particle" data-food="icecream"></div>
+  <div class="food-particle" data-food="broccoli"></div>
+  <div class="food-particle" data-food="strawberry"></div>
+  <div class="food-particle" data-food="banana"></div>
+  <div class="food-particle" data-food="donut"></div>
+  <div class="food-particle" data-food="apple"></div>
+  <div class="food-particle" data-food="tomato"></div>
+  <div class="food-particle" data-food="curry"></div>
+  <div class="food-particle" data-food="naan"></div>
+  <div class="food-particle" data-food="rice"></div>
+  <div class="food-particle" data-food="coconut"></div>
+  <div class="food-particle" data-food="mango"></div>
+  <div class="food-particle" data-food="chili"></div>
+  <div class="food-particle" data-food="lemon"></div>
+  <div class="food-particle" data-food="garlic"></div>
+  <div class="food-particle" data-food="onion"></div>
+  <div class="pulse-orb"></div>
+  <div class="pulse-orb"></div>
+</div>
+
+<!-- 🎮 PARTICLE GAME UI -->
+<div class="particle-game-ui">
+  <!-- Score Display -->
+  <div class="particle-score" *ngIf="particleScore > 0">
+    🎯 Score: {{ particleScore }}
+  </div>
+  
+  <!-- Score Popup -->
+  <div class="score-popup-display" *ngIf="showScore">
+    {{ currentScore }}
+  </div>
+  
+  <!-- Combo Display -->
+  <div class="combo-display" *ngIf="showCombo">
+    {{ comboText }}
+  </div>
+  
+  <!-- Reset Game Button -->
+  <button class="reset-game-btn" (click)="resetParticleGame()" *ngIf="particleScore > 0">
+    🎮 Reset Game
+  </button>
+</div>
+
+<!-- MAIN NAVIGATION -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid d-flex justify-content-between">
       <a class="navbar-brand" href="#">
@@ -14,11 +62,8 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Fruits </a>
                 <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                     <li *ngFor="let fruit of fruits" class="dropdown-item" (click)="$event.stopPropagation()">
-                        <!-- Wrap the checkbox and label inside the same label element -->
-                        <label class="form-check-label d-flex align-items-center w-100" for="{{fruit.value}}" (click)="toggleCheckbox(fruit.value, 'fruits')">
-                            <!-- Checkbox input -->
-                            <input class="form-check-input me-2" type="checkbox" id="{{fruit.value}}" [(ngModel)]="selectedFruits[fruit.value]">
-                            <!-- The text of the label -->
+                        <label class="form-check-label d-flex align-items-center w-100" for="{{ fruit.value }}" (click)="toggleCheckbox(fruit.value, 'fruits')">
+                            <input class="form-check-input me-2" type="checkbox" id="{{ fruit.value }}" [(ngModel)]="selectedFruits[fruit.value]">
                             {{ fruit.viewValue }}
                         </label>
                     </li>
@@ -33,10 +78,8 @@
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Vegetables </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                       <li *ngFor="let vegetable of vegetables" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <label class="form-check-label d-flex align-items-center w-100" for="{{vegetable.value}}" (click)="toggleCheckbox(vegetable.value, 'vegetables')">
-                              <!-- Checkbox input -->
-                              <input class="form-check-input me-2" type="checkbox" id="{{vegetable.value}}" [(ngModel)]="selectedVegetables[vegetable.value]">
-                              <!-- The text of the label -->
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{ vegetable.value }}" (click)="toggleCheckbox(vegetable.value, 'vegetables')">
+                              <input class="form-check-input me-2" type="checkbox" id="{{ vegetable.value }}" [(ngModel)]="selectedVegetables[vegetable.value]">
                               {{ vegetable.viewValue }}
                           </label>
                       </li>
@@ -51,9 +94,8 @@
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Spices </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                       <li *ngFor="let spice of spices" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <label class="form-check-label d-flex align-items-center w-100" for="{{spice.value}}" (click)="toggleCheckbox(spice.value, 'spices')">
-                              <!-- Checkbox input -->
-                              <input class="form-check-input me-2" type="checkbox" id="{{spice.value}}" [(ngModel)]="selectedSpices[spice.value]">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{ spice.value }}" (click)="toggleCheckbox(spice.value, 'spices')">
+                              <input class="form-check-input me-2" type="checkbox" id="{{ spice.value }}" [(ngModel)]="selectedSpices[spice.value]">
                               {{ spice.viewValue }}
                           </label>
                       </li>
@@ -67,11 +109,9 @@
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Grains </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-                      <!-- Loop through grains -->
                       <li *ngFor="let grain of grains" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <label class="form-check-label d-flex align-items-center w-100" for="{{grain.value}}" (click)="toggleCheckbox(grain.value, 'grains')">
-                              <!-- Checkbox input -->
-                              <input class="form-check-input me-2" type="checkbox" id="{{grain.value}}" [(ngModel)]="selectedGrains[grain.value]">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{ grain.value }}" (click)="toggleCheckbox(grain.value, 'grains')">
+                              <input class="form-check-input me-2" type="checkbox" id="{{ grain.value }}" [(ngModel)]="selectedGrains[grain.value]">
                               {{ grain.viewValue }}
                           </label>
                       </li>
@@ -85,11 +125,9 @@
               <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Legumes </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
-                      <!-- Loop through legumes -->
                       <li *ngFor="let legume of legumes" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <label class="form-check-label d-flex align-items-center w-100" for="{{legume.value}}" (click)="toggleCheckbox(legume.value,'legumes')">
-                              <!-- Checkbox input -->
-                              <input class="form-check-input me-2" type="checkbox" id="{{legume.value}}" [(ngModel)]="selectedLegumes[legume.value]">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{ legume.value }}" (click)="toggleCheckbox(legume.value,'legumes')">
+                              <input class="form-check-input me-2" type="checkbox" id="{{ legume.value }}" [(ngModel)]="selectedLegumes[legume.value]">
                               {{ legume.viewValue }}
                           </label>
                       </li>
@@ -104,9 +142,8 @@
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Meat </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                       <li *ngFor="let meatItem of meat" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <label class="form-check-label d-flex align-items-center w-100" for="{{meatItem.value}}" (click)="toggleCheckbox(meatItem.value, 'meat')">
-                              <!-- Checkbox input -->
-                              <input class="form-check-input me-2" type="checkbox" id="{{meatItem.value}}" [(ngModel)]="selectedMeat[meatItem.value]">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{ meatItem.value }}" (click)="toggleCheckbox(meatItem.value, 'meat')">
+                              <input class="form-check-input me-2" type="checkbox" id="{{ meatItem.value }}" [(ngModel)]="selectedMeat[meatItem.value]">
                               {{ meatItem.viewValue }}
                           </label>
                       </li>
@@ -121,9 +158,8 @@
                   <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dairy </a>
                   <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                       <li *ngFor="let dairyItem of dairy" class="dropdown-item" (click)="$event.stopPropagation()">
-                          <label class="form-check-label d-flex align-items-center w-100" for="{{dairyItem.value}}" (click)="toggleCheckbox(dairyItem.value, 'dairy')">
-                              <!-- Checkbox input -->
-                              <input class="form-check-input me-2" type="checkbox" id="{{dairyItem.value}}" [(ngModel)]="selectedDairy[dairyItem.value]">
+                          <label class="form-check-label d-flex align-items-center w-100" for="{{ dairyItem.value }}" (click)="toggleCheckbox(dairyItem.value, 'dairy')">
+                              <input class="form-check-input me-2" type="checkbox" id="{{ dairyItem.value }}" [(ngModel)]="selectedDairy[dairyItem.value]">
                               {{ dairyItem.viewValue }}
                           </label>
                       </li>
@@ -138,10 +174,8 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Cuisine </a>
                 <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                     <li *ngFor="let cuisine of cuisines" class="dropdown-item">
-                        <label class="form-check-label d-flex align-items-center w-100" for="{{cuisine.value}}">
-                            <!-- Radio input -->
-                            <input class="form-check-input me-2" type="radio" name="cuisine" id="{{cuisine.value}}" (change)="selectCuisine(cuisine.viewValue)" [checked]="selectedCuisine === cuisine.viewValue">
-                            <!-- The text of the label -->
+                        <label class="form-check-label d-flex align-items-center w-100" for="{{ cuisine.value }}">
+                            <input class="form-check-input me-2" type="radio" name="cuisine" id="{{ cuisine.value }}" (change)="selectCuisine(cuisine.viewValue)" [checked]="selectedCuisine === cuisine.viewValue">
                             {{ cuisine.viewValue }}
                         </label>
                     </li>
@@ -153,10 +187,8 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Course Type </a>
                 <ul class="dropdown-menu scrollable-menu" style="max-height: 200px; overflow-y: auto;">
                     <li *ngFor="let course of courseTypes" class="dropdown-item">
-                        <label class="form-check-label d-flex align-items-center w-100" for="{{course.value}}">
-                            <!-- Radio input -->
-                            <input class="form-check-input me-2" type="radio" name="courseType" id="{{course.value}}" (change)="selectCourseType(course.value)" [checked]="selectedCourseType === course.value">
-                            <!-- The text of the label -->
+                        <label class="form-check-label d-flex align-items-center w-100" for="{{ course.value }}">
+                            <input class="form-check-input me-2" type="radio" name="courseType" id="{{ course.value }}" (change)="selectCourseType(course.value)" [checked]="selectedCourseType === course.value">
                             {{ course.viewValue }}
                         </label>
                     </li>
@@ -166,7 +198,8 @@
       </div>
   </div>
 </nav>
-<!-- Div for displaying selected items -->
+
+<!-- SELECTED ITEMS DISPLAY -->
 <div class="container mt-4">
   <div class="d-flex flex-wrap justify-content-start">
       <!-- Selected Cuisine -->
@@ -245,7 +278,7 @@
               </ul>
           </div>
       </div>
-      <!-- Dairys -->
+      <!-- Dairy -->
       <div class="p-2 flex-fill" *ngIf="getSelectedItems(selectedDairy).length > 0">
           <div class="card">
               <div class="card-header bg-success text-white"> Selected Dairy </div>
@@ -257,37 +290,91 @@
           </div>
       </div>
   </div>
-  <!-- Button to craft the recipe -->
+  
+  <!-- CRAFT RECIPE BUTTON -->
   <div class="container mt-4 text-center">
       <button class="btn btn-primary btn-lg" (click)="craftRecipe()" [disabled]="!canCraftRecipe()">Craft</button>
   </div>
-  <div *ngIf="isLoading" class="text-center mt-5">
-      <div class="spinner-grow text-primary" role="status">
-          <span class="visually-hidden">Loading...</span>
+  
+  <!-- 🍳 BEAUTIFUL FOOD LOADING ANIMATION -->
+  <div *ngIf="isLoading" class="food-loading-container">
+    <!-- Floating Ingredients Around -->
+    <div class="floating-ingredients">
+      <div class="ingredient">🥕</div>
+      <div class="ingredient">🍅</div>
+      <div class="ingredient">🧄</div>
+      <div class="ingredient">🌶️</div>
+      <div class="ingredient">🧅</div>
+      <div class="ingredient">🥬</div>
+    </div>
+
+    <!-- Main Cooking Animation -->
+    <div class="cooking-animation">
+      <div class="cooking-pot">🍲</div>
+      <div class="steam-particles">
+        <div class="steam"></div>
+        <div class="steam"></div>
+        <div class="steam"></div>
+        <div class="steam"></div>
       </div>
-      <div class="spinner-grow text-secondary" role="status">
-          <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <!-- Loading Text -->
+    <div class="loading-text">
+      <h2 class="loading-title">Crafting Your Recipe</h2>
+      <p class="loading-subtitle">Our AI chef is working magic in the kitchen...</p>
+    </div>
+
+    <!-- Cooking Steps with Progress - Extended 8 Steps -->
+    <div class="cooking-steps">
+      <div class="step" [class.active]="loadingStep >= 1">
+        <div class="step-icon">🔍</div>
+        <div class="step-text">Scanning<br>Ingredients</div>
       </div>
-      <div class="spinner-grow text-success" role="status">
-          <span class="visually-hidden">Loading...</span>
+      <div class="step" [class.active]="loadingStep >= 2">
+        <div class="step-icon">🧠</div>
+        <div class="step-text">AI<br>Analysis</div>
       </div>
-      <div class="spinner-grow text-danger" role="status">
-          <span class="visually-hidden">Loading...</span>
+      <div class="step" [class.active]="loadingStep >= 3">
+        <div class="step-icon">📚</div>
+        <div class="step-text">Recipe<br>Database</div>
       </div>
-      <div class="spinner-grow text-warning" role="status">
-          <span class="visually-hidden">Loading...</span>
+      <div class="step" [class.active]="loadingStep >= 4">
+        <div class="step-icon">🌶️</div>
+        <div class="step-text">Spice<br>Balancing</div>
       </div>
-      <div class="spinner-grow text-info" role="status">
-          <span class="visually-hidden">Loading...</span>
+      <div class="step" [class.active]="loadingStep >= 5">
+        <div class="step-icon">👨‍🍳</div>
+        <div class="step-text">Chef<br>Design</div>
       </div>
-      <div class="spinner-grow text-secondary" role="status">
-          <span class="visually-hidden">Loading...</span>
+      <div class="step" [class.active]="loadingStep >= 6">
+        <div class="step-icon">🍳</div>
+        <div class="step-text">Cooking<br>Method</div>
       </div>
-      <div class="spinner-grow text-dark" role="status">
-          <span class="visually-hidden">Loading...</span>
+      <div class="step" [class.active]="loadingStep >= 7">
+        <div class="step-icon">✨</div>
+        <div class="step-text">Final<br>Touches</div>
       </div>
+      <div class="step" [class.active]="loadingStep >= 8">
+        <div class="step-icon">🎯</div>
+        <div class="step-text">Recipe<br>Ready!</div>
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" [style.width.%]="loadingStep * 12.5"></div>
+    </div>
+
+    <!-- Recipe Preview Text -->
+    <div class="recipe-preview">
+      <p class="recipe-preview-text">
+        {{ getLoadingMessage() }}
+      </p>
+    </div>
   </div>
-  <!-- Div for displaying the generated recipe -->
+  
+  <!-- RECIPE DISPLAY -->
   <div class="container mt-5" *ngIf="recipeTitle">
       <h2 class="text-center mb-4">Why don't you try this ?</h2>
       <div class="card shadow-sm">
@@ -314,4 +401,4 @@
           </div>
       </div>
   </div>
-  <!-- End of selected items display -->
+</div>
