@@ -139,7 +139,7 @@ export const legumes: CategoryItem[] = [
 export const Meat: CategoryItem[] = [
   { value: 'chicken', viewValue: 'Chicken' },
   { value: 'beef', viewValue: 'Beef' },
-  { value: 'Vegetarian', viewValue: 'Vegetarian' },
+  { value: 'vegetarian', viewValue: 'Vegetarian' },
   { value: 'pork', viewValue: 'Pork' },
   { value: 'lamb', viewValue: 'Lamb' },
   { value: 'turkey', viewValue: 'Turkey' },
@@ -156,7 +156,7 @@ export const Dairy: CategoryItem[] = [
   { value: 'cheese', viewValue: 'Cheese' },
   { value: 'yogurt', viewValue: 'Yogurt' },
   { value: 'butter', viewValue: 'Butter' },
-  { value: 'Eggs', viewValue: 'Eggs' },
+  { value: 'eggs', viewValue: 'Eggs' },
   { value: 'cream', viewValue: 'Cream' },
   { value: 'ghee', viewValue: 'Ghee' },
   { value: 'paneer', viewValue: 'Paneer' },
