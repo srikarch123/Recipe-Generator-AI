@@ -133,6 +133,9 @@ export const legumes: CategoryItem[] = [
   { value: 'fava_beans', viewValue: 'Fava Beans' },
   { value: 'mung_beans', viewValue: 'Mung Beans' },
   { value: 'green_beans', viewValue: 'Green Beans' },
+  { value: 'peanuts', viewValue: 'Peanuts' },
+  { value: 'urad_dal', viewValue: 'Urad Dal' },
+  { value: 'chana_dal', viewValue: 'Chana Dal' },
   { value: 'adzuki_beans', viewValue: 'Adzuki Beans' }
 ];
 
